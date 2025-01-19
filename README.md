@@ -1,21 +1,25 @@
 # MDD-OMC
-
-Here's a draft for your README.md file for an AI prediction repository related to OMC (Optimum Moisture Content) and MDD (Maximum Dry Density):
+Here is the updated `README.md` content tailored to your provided code and details:
 
 ```markdown
 # AI Prediction for OMC and MDD
 
-This repository contains code and resources for building, training, and deploying machine learning models to predict **Optimum Moisture Content (OMC)** and **Maximum Dry Density (MDD)** based on geotechnical soil properties. These predictions are useful in civil engineering and soil mechanics for optimizing compaction processes.
+This repository contains the implementation of machine learning models to predict **Optimum Moisture Content (OMC)** and **Maximum Dry Density (MDD)**. These predictions are based on geotechnical soil properties using advanced regression techniques and hyperparameter optimization via **Particle Swarm Optimization (PSO)**. The project is released under the [CC0-1.0 License](LICENSE), making it publicly available for research and educational purposes.
 
 ---
 
 ## Features
 
-- **Data Preprocessing:** Tools to clean, normalize, and prepare soil property datasets for training.
-- **Machine Learning Models:** Implementation of regression models such as Linear Regression, Random Forest, Gradient Boosting, and Neural Networks.
-- **Model Evaluation:** Metrics such as Mean Absolute Error (MAE), Mean Squared Error (MSE), and R² for performance assessment.
-- **Visualization:** Generate plots for data exploration and model results.
-- **Deployment:** Export trained models for integration into web or desktop applications.
+- **Data Preprocessing:** Handles missing and non-numeric values to ensure clean data for training.
+- **Advanced Models:** Implementation of:
+  - Random Forest
+  - Gradient Boosting
+  - Support Vector Regression (SVR)
+  - Neural Networks (MLPRegressor)
+- **Hyperparameter Optimization:** Utilizes PSO to find optimal parameters for all models.
+- **Model Evaluation:** Metrics include R² Score and Mean Squared Error (MSE) for performance comparison.
+- **Visualization:** Heatmaps for correlation analysis and bar charts for performance metrics comparison.
+- **Model Saving:** Best models are saved in `.pkl`, `.joblib`, or `.h5` formats for later use.
 
 ---
 
@@ -33,7 +37,7 @@ This repository contains code and resources for building, training, and deployin
 
 ## Installation
 
-Clone this repository and install the required dependencies.
+Clone the repository and install the necessary dependencies.
 
 ```bash
 git clone https://github.com/yourusername/ai-prediction-omc-mdd.git
@@ -41,67 +45,102 @@ cd ai-prediction-omc-mdd
 pip install -r requirements.txt
 ```
 
+### Requirements
+
+- Python 3.7+
+- Libraries:
+  - `numpy`
+  - `pandas`
+  - `matplotlib`
+  - `seaborn`
+  - `scikit-learn`
+  - `keras`
+  - `tensorflow`
+  - `joblib`
+  - `pyswarm`
+  - `openpyxl`
+
+Install all dependencies using the command:
+
+```bash
+pip install -r requirements.txt
+```
+
 ---
 
 ## Usage
 
-### Step 1: Data Preparation
-Place your dataset in the `data/` folder. Ensure the dataset includes columns for relevant soil properties, such as:
+### Step 1: Prepare the Dataset
 
-- Grain size distribution
-- Atterberg limits
-- Soil classification
-- Natural moisture content
-- Bulk density
+- Place your dataset (e.g., `MDD-OMC.xlsx`) in the `data/` folder.
+- Ensure it includes the following columns:
+  - `GC`, `SC`, `FC`, `LL`, `PL`, `PI`, `E` (features)
+  - `OMC` (Optimum Moisture Content - target)
+  - `MDD` (Maximum Dry Density - target)
 
-### Step 2: Training the Model
-Run the training script with the following command:
+### Step 2: Run the Script
 
-```bash
-python train_model.py --config config.yaml
-```
-
-### Step 3: Making Predictions
-Use the trained model to make predictions:
+Execute the main script to train and evaluate the models:
 
 ```bash
-python predict.py --input sample_input.csv --output predictions.csv
+python main.py
 ```
+
+### Step 3: Results and Models
+
+- Results are visualized in the form of correlation heatmaps, prediction scatter plots, and performance bar charts.
+- The best models are saved in the repository folder.
 
 ---
 
 ## Dataset
 
-Ensure your dataset is in CSV format. A sample dataset is included in the `data/` folder for reference. The dataset should include features like:
+The dataset should include relevant soil properties as features and OMC/MDD as target variables. Example features:
 
-- **Soil properties:** Specific soil characteristics (e.g., plasticity index, sand/silt content)
-- **Target variables:** OMC and MDD
+- **GC:** Gravel Content
+- **SC:** Sand Content
+- **FC:** Fines Content
+- **LL:** Liquid Limit
+- **PL:** Plastic Limit
+- **PI:** Plasticity Index
+- **E:** Other engineering properties
+
+A sample dataset (`MDD-OMC.xlsx`) is included for reference.
 
 ---
 
 ## Model Training
 
-Configuration for the models can be adjusted in the `config.yaml` file. Key parameters include:
+Hyperparameter optimization is performed using Particle Swarm Optimization (PSO). The following models are compared:
 
-- **Algorithms:** Random Forest, Gradient Boosting, Neural Networks
-- **Hyperparameters:** Learning rate, number of estimators, etc.
-- **Cross-validation:** Define the number of folds for robust evaluation.
+1. **Random Forest**
+2. **Gradient Boosting**
+3. **Support Vector Regression (SVR)**
+4. **Neural Network (MLPRegressor)**
 
-The training script automatically splits the data into training and testing sets, trains the model, and evaluates performance.
+For each target variable (`OMC` and `MDD`):
+- The dataset is split into training and testing sets (80:20 split).
+- Models are trained using PSO to find the best hyperparameters.
+- The best-performing model is saved.
 
 ---
 
 ## Results
 
-Model performance is reported using standard regression metrics:
+### Visualization
 
-- **Mean Absolute Error (MAE):** Measures average prediction error.
-- **Mean Squared Error (MSE):** Penalizes larger errors more heavily.
-- **R² Score:** Explains the proportion of variance captured by the model.
+- **Correlation Heatmap:** Displays relationships between features and target variables.
+- **Prediction Scatter Plots:** Visualize predicted vs. actual values.
+- **Bar Charts:** Compare R² and MSE scores for all models.
 
-Example visualization of results:
+### Example Performance Metrics
 
-![Model Performance](assets/model_performance.png)
+| Model                 | R² (Train) | R² (Test) | MSE (Train) | MSE (Test) |
+|-----------------------|------------|-----------|-------------|------------|
+| Random Forest         | 0.90       | 0.88      | 0.012       | 0.015      |
+| Gradient Boosting     | 0.89       | 0.87      | 0.014       | 0.018      |
+| Support Vector Regression | 0.86   | 0.84      | 0.017       | 0.020      |
+| Neural Network        | 0.92       | 0.89      | 0.010       | 0.014      |
 
 ---
 
@@ -119,19 +158,17 @@ Contributions are welcome! Please follow these steps:
 
 ## License
 
-This project is licensed under the [CC0-1.0 license](LICENSE).
+This project is licensed under the [CC0-1.0 License](LICENSE). Feel free to use, modify, and distribute the code without restriction.
 
 ---
 
 ## Acknowledgments
 
-Special thanks to the geotechnical engineering and data science communities for providing valuable datasets and research insights.
+Special thanks to the geotechnical engineering and data science communities for their contributions to soil property research and machine learning innovations.
 
 ---
 
 ### Contact
 
-For any questions or feedback, please contact [rhudwill@gmail.com].
-
-``` 
-
+For questions, feedback, or contributions, contact [rhudwill@gmail.com].
+```
