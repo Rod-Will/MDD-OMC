@@ -92,17 +92,6 @@ pip install -r requirements.txt
 - Integrate additional models like XGBoost and CatBoost.  
 - Include feature importance analysis for better interpretability.  
 
-## Contributing  
-
-Contributions are welcome! Please submit a pull request or raise an issue for any suggestions or enhancements.  
-
-## License  
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.  
-```
-
-Feel free to adjust the repository name, structure, or any section as per your project specifics.
-
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
