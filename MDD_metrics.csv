@@ -1,0 +1,5 @@
+model,r2_train,r2_test,mse_train,mse_test,best_params
+Random Forest,0.9838393119052488,0.9205919320957928,0.0005998031405780196,0.0037900352492897557,"{'n_estimators': 200, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_depth': None}"
+Gradient Boosting,0.9870001780530592,0.9561500713480127,0.00048248774959419393,0.002092895339933939,"{'subsample': 0.8, 'n_estimators': 200, 'max_depth': 3, 'learning_rate': 0.05}"
+Support Vector Regression,0.9504732015755606,0.9392661159237762,0.0018381846777552437,0.002898742754361493,"{'kernel': 'rbf', 'epsilon': 0.1, 'C': 10}"
+Neural Network,0.9010063992107313,0.9154543600226366,0.003674142604720826,0.00403524432900843,"{'learning_rate': 'adaptive', 'hidden_layer_sizes': (20, 20), 'alpha': 0.001, 'activation': 'relu'}"
