@@ -11,8 +11,7 @@ This repository contains scripts, results, and visualizations for training machi
 ├── data/                     # Dataset files used for training and testing  
 ├── notebooks/                # Jupyter Notebooks for exploratory analysis and experiments  
 ├── results/  
-│   ├── plots/                # Plots from initial experiments  
-│   ├── plots2/               # Grid prediction plots for optimized models  
+│   ├── plots/                # Plots from initial experiments and Grid prediction plots for optimized models 
 │   ├── OMC_results.csv       # Model performance for OMC predictions  
 │   ├── MDD_results.csv       # Model performance for MDD predictions  
 ├── scripts/                  # Python scripts for model training and evaluation  
